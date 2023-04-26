@@ -1,29 +1,49 @@
 import './App.css';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+// import Layout from "./pages/Layout";
+// import Home from "./pages/Home";
+// import Blogs from "./pages/Blogs";
+// import Contact from "./pages/Contact";
+// import NoPage from "./pages/NoPage";
 
-function App() {
+const Home = () => {
+  return <h1>Welcome to the Home page</h1>;
+};
+
+const About = () => {
+  return <h1>About Us</h1>;
+};
+
+const Contact = () => {
+  return <h1>Contact Us</h1>;
+};
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Route path="/" exact component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/contact" component={Contact} />
+      </div>
+    </Router>
   );
+
 }
 
 export default App;
